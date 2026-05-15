@@ -4,38 +4,51 @@ Asset blobs (MJCF / URDF) for [GeneLab](https://github.com/KraHsu/GeneLab) built
 robots. The Python package keeps configuration code in-tree and references these blobs
 via md5-verified downloads, so the runtime install stays lean.
 
-## Layout
+## Two delivery formats
+
+GeneLab's `fetch_asset` helper accepts both single-file and archive entries:
 
 ```
 <robot-name>/
-    <robot-name>.xml          # MJCF entry point
-    [meshes/, textures/, ...]  # optional dependencies
+    <robot-name>.xml          # single-file mode: MJCF only
 ```
 
-Each robot directory matches the `AssetSpec.name` declared in
-`genelab.asset_zoo.<robot>.py`. The corresponding entry in `genelab.asset_zoo` pins:
+or, when meshes / textures are needed:
+
+```
+<robot-name>/
+    <robot-name>.tar.gz       # archive mode: full Menagerie-style folder
+```
+
+The matching `AssetSpec` in `genelab.asset_zoo.<robot>.py` pins:
 
 - `url` — absolute `raw.githubusercontent.com/.../main/<path>` URL
-- `md5` — md5 digest of the MJCF blob; bumping this invalidates downstream caches
-- `filename` — final basename under the cache directory
+- `md5` — md5 digest of the file or archive blob; bumping it invalidates the cache
+- `filename` — basename under the cache directory
+- `archive_member` *(archive mode only)* — relative path to the entry MJCF inside the
+  extracted tree
 
 ## Available robots
 
-| Robot | MJCF | Source |
-|---|---|---|
-| Cartpole | [`cartpole/cartpole.xml`](cartpole/cartpole.xml) | Cart-on-rail + hinged pole; designed for GeneLab's `CartpoleCfg`. |
-| Franka Emika Panda | [`franka/franka.xml`](franka/franka.xml) | Minimal kinematic stub with joint names aligned to MuJoCo Menagerie. Replace with the full Menagerie model + meshes for visual fidelity. |
+| Robot | Asset | Mode | Source |
+|---|---|---|---|
+| Cartpole | [`cartpole/cartpole.xml`](cartpole/cartpole.xml) | single-file | Cart-on-rail + hinged pole; designed for GeneLab's `CartpoleCfg`. |
+| Franka Emika Panda | [`franka/franka.xml`](franka/franka.xml) | single-file | Minimal kinematic stub with joint names aligned to MuJoCo Menagerie. |
+| Unitree G1 | `unitree_g1/unitree_g1.tar.gz` | archive | 29-DoF humanoid mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1) (BSD-3-Clause). |
+| Unitree Go1 | `unitree_go1/unitree_go1.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_go1) (BSD-3-Clause). |
+| ANYbotics Anymal C | `anybotics_anymal_c/anybotics_anymal_c.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/anybotics_anymal_c) (BSD-3-Clause). |
 
 ## Updating an asset
 
-1. Edit the MJCF (or replace with a higher-fidelity model).
-2. Compute the new md5: `md5sum cartpole/cartpole.xml`.
+1. Edit the MJCF, or regenerate the tar.gz from a fresh Menagerie pull.
+2. Compute the new md5: `md5sum <robot>/<robot>.xml` (or `.tar.gz`).
 3. Commit and push to `main`.
 4. Update the `md5` field in the matching `genelab.asset_zoo.<robot>.py` module so the
    downstream cache invalidates cleanly.
 
 ## License
 
-Files in this repository are provided for use with GeneLab. Robot models derived from
-third-party sources (e.g. MuJoCo Menagerie) carry their upstream licenses; see the
-relevant subdirectories for attribution when applicable.
+Original GeneLab assets (cartpole, franka stub) are released for use with GeneLab. Each
+Menagerie-derived archive bundles its upstream `LICENSE` and `README.md` so the BSD-3
+attribution travels with the model. Redistributing the contents of those archives must
+preserve the included notice.
