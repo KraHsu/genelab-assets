@@ -33,7 +33,7 @@ The matching `AssetSpec` in `genelab.asset_zoo.<robot>.py` pins:
 | Robot | Asset | Mode | Source |
 |---|---|---|---|
 | Cartpole | [`cartpole/cartpole.xml`](cartpole/cartpole.xml) | single-file | Cart-on-rail + hinged pole; designed for GeneLab's `CartpoleCfg`. |
-| Franka Emika Panda | [`franka/franka.xml`](franka/franka.xml) | single-file | Minimal kinematic stub with joint names aligned to MuJoCo Menagerie. |
+| Franka Emika Panda | `franka_emika_panda/franka_emika_panda.tar.gz` | archive | 7-DoF arm + parallel gripper mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/franka_emika_panda) (Apache-2.0). |
 | Unitree G1 | `unitree_g1/unitree_g1.tar.gz` | archive | 29-DoF humanoid mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1) (BSD-3-Clause). |
 | Unitree Go1 | `unitree_go1/unitree_go1.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_go1) (BSD-3-Clause). |
 | ANYbotics Anymal C | `anybotics_anymal_c/anybotics_anymal_c.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/anybotics_anymal_c) (BSD-3-Clause). |
