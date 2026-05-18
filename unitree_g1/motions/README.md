@@ -7,13 +7,19 @@ Each `.npz` follows the schema consumed by
 
 | Key | Shape | Notes |
 |---|---|---|
-| `joint_pos`      | `(T, 29)` `float32` | G1 actuated joints, full-order |
+| `joint_pos`      | `(T, 29)` `float32` | G1 actuated joints, mjlab MJCF DFS order |
 | `joint_vel`      | `(T, 29)` `float32` | |
-| `body_pos_w`     | `(T, 30, 3)` `float32` | World-frame body positions, MuJoCo body order (excluding `world`) |
+| `body_pos_w`     | `(T, 30, 3)` `float32` | World-frame body positions, mjlab MJCF DFS order (excluding `world`) |
 | `body_quat_w`    | `(T, 30, 4)` `float32` | wxyz |
 | `body_lin_vel_w` | `(T, 30, 3)` `float32` | |
 | `body_ang_vel_w` | `(T, 30, 3)` `float32` | rad/s |
 | `fps`            | `(1,)` | Output framerate (typically `50`) |
+
+GeneLab's `MotionCommandCfg.motion_body_order` / `motion_joint_order` accept the
+two reference orderings as `tuple[str, ...]` so the runtime robot's axis order
+can differ from this file's. For G1, the canonical orderings are exported as
+`G1_MJLAB_BODY_NAMES` and `G1_MJLAB_JOINT_NAMES` in
+`genelab.asset_zoo.unitree_g1_motions`.
 
 ## Layout
 
@@ -29,9 +35,12 @@ unitree_g1/motions/
 
 ## Bundled clips
 
-| File | Source CSV | Length | License |
-|---|---|---|---|
-| `dance1_subject2.npz` | [`lvhaidong/LAFAN1_Retargeting_Dataset` → `g1/dance1_subject2.csv`](https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset) | ~131 s @ 30 fps → ~131 s @ 50 fps (6574 frames) | CC BY-NC-ND 4.0 |
+| File | md5 | Source CSV | Length | License |
+|---|---|---|---|---|
+| `dance1_subject2.npz` | `844731ab25e33ccd67798d4e22067ff9` | [`lvhaidong/LAFAN1_Retargeting_Dataset` → `g1/dance1_subject2.csv`](https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset) | ~131 s @ 30 fps → ~131 s @ 50 fps (6574 frames) | CC BY-NC-ND 4.0 |
+
+The md5 is pinned by GeneLab's `genelab.asset_zoo.unitree_g1_motions.g1_lafan1_dance1_subject2`
+`AssetSpec`; bump it there together with this entry when re-publishing the blob.
 
 ## Regenerating an NPZ
 
