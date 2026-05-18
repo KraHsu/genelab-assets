@@ -38,6 +38,12 @@ The matching `AssetSpec` in `genelab.asset_zoo.<robot>.py` pins:
 | Unitree Go1 | `unitree_go1/unitree_go1.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_go1) (BSD-3-Clause). |
 | ANYbotics Anymal C | `anybotics_anymal_c/anybotics_anymal_c.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/anybotics_anymal_c) (BSD-3-Clause). |
 
+## Motion clips
+
+| Robot | Asset | Notes |
+|---|---|---|
+| Unitree G1 | [`unitree_g1/motions/dance1_subject2.npz`](unitree_g1/motions/dance1_subject2.npz) | LAFAN1 retargeted dance clip (CC BY-NC-ND 4.0); see [`unitree_g1/motions/README.md`](unitree_g1/motions/README.md). |
+
 ## Updating an asset
 
 1. Edit the MJCF, or regenerate the tar.gz from a fresh Menagerie pull.

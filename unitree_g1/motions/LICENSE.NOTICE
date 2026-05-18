@@ -1,0 +1,42 @@
+Unitree G1 motion clips bundled in this directory
+==================================================
+
+`dance1_subject2.npz` was produced by running mjlab's `csv_to_npz` converter
+(forward-kinematics replay through MuJoCo Warp) on the matching CSV from the
+Unitree-retargeted LAFAN1 dataset:
+
+  Source CSV  https://huggingface.co/datasets/lvhaidong/LAFAN1_Retargeting_Dataset
+              (path: g1/dance1_subject2.csv)
+  Original    Ubisoft LAFAN1 Motion Capture dataset
+              https://github.com/ubisoft/ubisoft-laforge-animation-dataset
+
+License (inherited)
+-------------------
+
+  Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+  Public License (CC BY-NC-ND 4.0)
+  https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+Implications
+------------
+
+* Non-commercial use only. Do not redistribute these clips in any commercial
+  product or paid service.
+* The NPZ is a derivative of the upstream CSV (forward-kinematics replay adds
+  body poses + velocities). It is bundled here for research convenience under a
+  best-effort attribution reading of the upstream license. Downstream users
+  with stricter compliance needs should re-derive the NPZ from the original
+  CSV via `scripts/convert.sh`.
+* Attribution: cite Ubisoft LAFAN1 + the Unitree retargeting effort (see the
+  HuggingFace dataset card) whenever you publish results trained on these
+  clips.
+* The csv_to_npz conversion script in `scripts/csv_to_npz.upstream.py` is a
+  verbatim copy of `src/mjlab/scripts/csv_to_npz.py` from mjlab
+  (https://github.com/Mujoco-Lab/mjlab), Apache-2.0 licensed.
+
+Re-conversion
+-------------
+
+`scripts/convert.sh` documents how to regenerate the NPZ from a fresh CSV
+download. It requires a one-off `uv pip install mjlab` and a working CUDA
+device (mjlab's converter is GPU-only by default).
