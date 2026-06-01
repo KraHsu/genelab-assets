@@ -39,6 +39,7 @@ The matching `AssetSpec` in `genelab.asset_zoo.<robot>.py` pins:
 | ANYbotics Anymal C | `anybotics_anymal_c/anybotics_anymal_c.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/anybotics_anymal_c) (BSD-3-Clause). |
 | WUJI Hand | `wuji_hand/wuji_hand.tar.gz` | archive | 20-DoF dexterous hand (left + right) description from [WUJI Technology](https://github.com/wuji-technology/wuji-description). |
 | WUJI Hand (reorient) | `wuji_hand_reorient/wuji_hand_reorient.tar.gz` | archive (meshes only) | Right-hand collision/soft-pad meshes (incl. `_simplified` / `_softbody`) for the in-hand reorientation task; paired with the in-tree `right_mjlab.xml`. |
+| WUJI Cube | `wuji_cube/wuji_cube.tar.gz` | archive | 54 mm textured cube (UV face atlas) for the reorientation task's viewer (visible faces + goal marker). |
 
 ## Motion clips
 
