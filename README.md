@@ -37,6 +37,7 @@ The matching `AssetSpec` in `genelab.asset_zoo.<robot>.py` pins:
 | Unitree G1 | `unitree_g1/unitree_g1.tar.gz` | archive | 29-DoF humanoid mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1) (BSD-3-Clause). |
 | Unitree Go1 | `unitree_go1/unitree_go1.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_go1) (BSD-3-Clause). |
 | ANYbotics Anymal C | `anybotics_anymal_c/anybotics_anymal_c.tar.gz` | archive | 12-DoF quadruped mirrored from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/anybotics_anymal_c) (BSD-3-Clause). |
+| WUJI Hand | `wuji_hand/wuji_hand.tar.gz` | archive | 20-DoF dexterous hand (left + right) description from [WUJI Technology](https://github.com/wuji-technology/wuji-description). |
 
 ## Motion clips
 
